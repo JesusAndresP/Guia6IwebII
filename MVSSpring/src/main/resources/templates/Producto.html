@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <!DOCTYPE html>
+    <html lang="en"
+          xmlns="http://www.w3.org" 
+          xmlns:th="http://www.thymeleaf.org"
+          xlmns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+        <head>
+            <meta charset="UTF-8">
+            <title>Lista de Productos</title>
+        </head>
+        <body>
+            <div layout:fragment="content" class="row">
+                <div class="col-xs-8 col-md-8">
+                    <h3>
+                        <a href="/crear" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span>Product</a>
+                    </h3>
+                    <h2>Product list</h2>
+                    <div class="table-responsive">
+                        <table class="table" id="product-table">
+                            <thead>
+                                <tr>
+                                    <th>Nombre producto</th>
+                                    <th>Descripción producto</th>
+                                    <th>Precio producto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="producto:${productos}">
+                                    <td><a th:text="${producto.prodNombre}" th:href="@{'/mostrar'+$producto,id}}"></a></td>
+                                    <td th:text="${producto.prodDesc}"></td>
+                                    <td th:text="${producto.prodPrecio}"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>
+

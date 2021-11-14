@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <!DOCTYPE html>
+    <html lang="en"
+          xmlns="http://www.w3.org" 
+          xmlns:th="http://www.thymeleaf.org"
+          xlmns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+        <head>
+            <meta charset="UTF-8">
+            <title>Show Product</title>
+        </head>
+        <body>
+            <div layout:fragment="content" class="row">
+                <div class="col-xs-8 col-md-8">
+                    <h3>
+                        <a href="/product" class="btn btn-lg btn-primary"><span class="glyphicon glyphicon-list"></span>Product</a>
+                    </h3>
+                    <h2 th:text="${producto.prodNombre}"></h2>
+                    <h2><img th:src="${producto.prodImagen}" width="200"/></h2>
+                    <dl class="list">
+                        <dt>Product Description</dt>
+                        <dd th:text="${producto.prodDesc}"></dd>
+                        <dt>Product Description</dt>
+                        <dd th:text="${producto.prodPrecio}"></dd>
+
+                    </dl>
+
+
+                    <form action="/borrar">
+                        <input type="hidden" name="id" th:value="${producto.id}"/>
+                        <h2><input type="submit" class="btn btn-danger" value="Borrar" onclick="return confirm('Está seguro?');"/>
+                            <a th:href="@{'/modificar/'+${producto.id}}" class="btn btn-warning">Editar</a></h2>
+
+                    </form>
+                </div>
+            </div>
+        </body>
+    </html>
+
